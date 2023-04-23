@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
-const generateSVG = require('./generateSVG')
+const generateSVG = require('./lib/generateSVG')
 
 class Shape {
     constructor(text, textColor, fillColor) {
@@ -65,14 +65,14 @@ function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
     if (err) throw err;
     });
-    console.log('Icon Created');
+    console.log('Generated logo.svg');
 };
 
 function init() {
     inquirer.prompt(questions)
     .then((answers => {
         let iconSVG = generateSVG(answers);
-        writeToFile('iconSVG.svg', iconSVG);
+        writeToFile('./examples/icon.svg', iconSVG);
     }));
 };
 
