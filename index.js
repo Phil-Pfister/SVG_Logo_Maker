@@ -1,41 +1,10 @@
 const inquirer = require("inquirer");
-const fs = require('fs');
-const generateSVG = require('./lib/generateSVG')
-
-class Shape {
-    constructor(text, textColor, fillColor) {
-        this.text = text;
-        this.textColor = textColor;
-        this.fillColor = fillColor;
-    }
-}
-
-class Circle extends Shape {
-    constructor(text, textColor, fillColor, cx, cy, radius) {
-    super(text, textColor, fillColor);
-    this.cx = cx;
-    this.cy = cy;
-    this.radius = radius;
-    }
-}
-
-class Square extends Shape {
-    constructor(text, textColor, fillColor, height, width) {
-        super(text, textColor, fillColor);
-        this.height = height;
-        this.width = width;
-        
-    }
-
-}
-
-class Triangle extends Shape {
-    constructor(text, textColor, fillColor, height, width) {
-        super(text, textColor, fillColor);
-        this.height = height;
-        this.width = width;
-    }
-}
+const { writeFile } = require('fs/promises');
+// const generateSVG = require('./lib/generateSVG')
+const Circle = require('./lib/circle');
+const Triangle = require('./lib/triangle');
+const Square = require('./lib/square');
+const Shape = require('./lib/shape');
 
 const questions = [
     {
@@ -60,20 +29,48 @@ const questions = [
         name: 'textColor',
     }
 ];
-
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
-    if (err) throw err;
+inquirer.prompt(questions)
+    .then((data => {
+        
+            if (data.shape === 'circle') {
+                const circle = new Circle(data.text, data.textColor, data.fillColor, `<circle cx="150" cy="100" r="80"`)
+                userShape = circle
+            } else if (data.shape === 'square') {
+                const square = new Square(data.text, data.textColor, data.fillColor,`<polygon points="70,20, 230,20, 230,180 70,180"`)
+                userShape = square
+            } else if (data.shape === 'triangle') {
+                const triangle = new Triangle(data.text, data.textColor, data.fillColor,`<polygon points="150,10 260,150 40,150"`)
+                userShape = triangle
+            }
+        }
+        
+        
+        
+    ))
+    .then(() => {
+        const icon = userShape.renderUserShape();
+        return writeFile('./examples/icon.svg', icon);
+    })
+    .then(() => {
+        console.log('Generated logo.svg');
+    })
+    .catch((err) => {
+        console.log(err)
+        console.log('unable to create file')
     });
-    console.log('Generated logo.svg');
-};
+// function writeToFile(fileName, data) {
+//     fs.writeFile(fileName, data, (err) => {
+//     if (err) throw err;
+//     });
+//     console.log('Generated logo.svg');
+// };
 
-function init() {
-    inquirer.prompt(questions)
-    .then((answers => {
-        let iconSVG = generateSVG(answers);
-        writeToFile('./examples/icon.svg', iconSVG);
-    }));
-};
+// function init() {
+//     inquirer.prompt(questions)
+//     .then((answers => {
+//         let iconSVG = generateSVG(answers);
+//         writeToFile('./examples/icon.svg', iconSVG);
+//     }));
+// };
 
-init();
+// init();
