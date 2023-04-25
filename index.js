@@ -34,13 +34,13 @@ inquirer.prompt(questions)
         
             if (data.shape === 'circle') {
                 const circle = new Circle(data.text, data.textColor, data.fillColor, `<circle cx="150" cy="100" r="80"`)
-                userShape = circle
+                userShape = circle;
             } else if (data.shape === 'square') {
                 const square = new Square(data.text, data.textColor, data.fillColor,`<polygon points="70,20, 230,20, 230,180 70,180"`)
-                userShape = square
+                userShape = square;
             } else if (data.shape === 'triangle') {
                 const triangle = new Triangle(data.text, data.textColor, data.fillColor,`<polygon points="150,10 260,150 40,150"`)
-                userShape = triangle
+                userShape = triangle;
             }
         }
         
@@ -58,19 +58,3 @@ inquirer.prompt(questions)
         console.log(err)
         console.log('unable to create file')
     });
-// function writeToFile(fileName, data) {
-//     fs.writeFile(fileName, data, (err) => {
-//     if (err) throw err;
-//     });
-//     console.log('Generated logo.svg');
-// };
-
-// function init() {
-//     inquirer.prompt(questions)
-//     .then((answers => {
-//         let iconSVG = generateSVG(answers);
-//         writeToFile('./examples/icon.svg', iconSVG);
-//     }));
-// };
-
-// init();
