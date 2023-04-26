@@ -36,11 +36,15 @@ inquirer.prompt(questions)
                 const circle = new Circle(data.text, data.textColor, data.fillColor, `<circle cx="150" cy="100" r="80"`)
                 userShape = circle;
             } else if (data.shape === 'square') {
-                const square = new Square(data.text, data.textColor, data.fillColor,`<polygon points="70,20, 230,20, 230,180 70,180"`)
+                const square = new Square(data.text, data.textColor, data.fillColor, `<polygon points="70,20, 230,20, 230,180 70,180"`)
                 userShape = square;
             } else if (data.shape === 'triangle') {
-                const triangle = new Triangle(data.text, data.textColor, data.fillColor,`<polygon points="150,10 260,150 40,150"`)
+                const triangle = new Triangle(data.text, data.textColor, data.fillColor, `<polygon points="150,10 260,150 40,150"`)
                 userShape = triangle;
+            }
+
+            if (data.text.length !== 3) {
+                throw new Error(`logo must be 3 exactly characters`)
             }
         }
         
