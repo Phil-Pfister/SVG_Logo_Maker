@@ -1,10 +1,9 @@
 const inquirer = require("inquirer");
 const { writeFile } = require('fs/promises');
-// const generateSVG = require('./lib/generateSVG')
 const Circle = require('./lib/circle');
 const Triangle = require('./lib/triangle');
 const Square = require('./lib/square');
-const Shape = require('./lib/shape');
+const { generateSVG } = require('./lib/generateSVG')
 
 const questions = [
     {
@@ -33,30 +32,50 @@ inquirer.prompt(questions)
     .then((data => {
         
             if (data.shape === 'circle') {
-                const circle = new Circle(data.text, data.textColor, data.fillColor, `<circle cx="150" cy="100" r="80"`)
-                userShape = circle;
+                const circle = new Circle(data.text, data.textColor);
+                circle.setColor(data.fillColor);
+                userShape = circle.render();
+               
             } else if (data.shape === 'square') {
-                const square = new Square(data.text, data.textColor, data.fillColor, `<polygon points="70,20, 230,20, 230,180 70,180"`)
-                userShape = square;
+                const square = new Square(data.text, data.textColor);
+                square.setColor(data.fillColor);
+                userShape = square.render();
+                
+               
             } else if (data.shape === 'triangle') {
-                const triangle = new Triangle(data.text, data.textColor, data.fillColor, `<polygon points="150,10 260,150 40,150"`)
-                userShape = triangle;
+                const triangle = new Triangle(data.text, data.textColor)
+                triangle.setColor(data.fillColor);
+                userShape = triangle.render();
+                
+               
+                
             }
 
             if (data.text.length !== 3) {
                 throw new Error(`logo must be 3 exactly characters`)
             }
+
+            
+            
+            iconText = data.text;
+            iconTextColor = data.textColor;
         }
+       
         
         
         
     ))
     .then(() => {
-        const icon = userShape.renderUserShape();
+        console.log(userShape)
+    })
+    .then(() => {
+        const icon = generateSVG(userShape, iconText, iconTextColor);
         return writeFile('./examples/icon.svg', icon);
+        
     })
     .then(() => {
         console.log('Generated logo.svg');
+        
     })
     .catch((err) => {
         console.log(err)
