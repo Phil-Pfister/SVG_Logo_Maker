@@ -36,6 +36,7 @@ inquirer.prompt(questions)
             // sets data for the shape that was chosen by user 
             if (data.shape === 'circle') {
                 const circle = new Circle(data.text, data.textColor);
+                //sets color for the shape
                 circle.setColor(data.fillColor);
                  // sets the inputs to generateSVG function
                 iconText = circle.renderText();
@@ -60,12 +61,7 @@ inquirer.prompt(questions)
             // makes sure the text is only three letters or throws error
             if (data.text.length !== 3) {
                 throw new Error(`logo must be 3 exactly characters`)
-            }
-
-            
-            // sets the inputs to generateSVG function
-            // iconText = userShape.renderText();
-            // iconTextColor = data.textColor;
+            };
         }
        
         
