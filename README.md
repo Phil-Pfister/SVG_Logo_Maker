@@ -33,7 +33,7 @@
 
   ![Image of finished logo](./images/icon_example.png)
 
-  [Click here to see a video of application in use](https://drive.google.com/file/d/1DJIGW_S0L7uHk7SQnVxHMcshpisB_1wY/view?usp=sharing)
+  [Click here to see a video of application in use](https://drive.google.com/file/d/1GBiPxkluZhTKVdQPhRKj0VjHyv4FDX3-/view?usp=sharing)
 
   ## Credits 
   ------------------
