@@ -9,6 +9,16 @@ const { generateSVG } = require('./lib/generateSVG')
 // questions for inquirer
 const questions = [
     {
+        type: 'input',
+        message: 'What 3 letter logo would you like to display?',
+        name: 'text',
+    },
+    {
+        type: 'input',
+        message: 'What color would you like the text to be? (enter color or hex value)',
+        name: 'textColor',
+    },
+    {
         type: 'list',
         message: 'Which shape would you like your icon to be?',
         name: 'shape',
@@ -18,17 +28,8 @@ const questions = [
         type: 'input',
         message: 'What color would you like the background? (enter color or hex value)',
         name: 'fillColor',
-    },
-    {
-        type: 'input',
-        message: 'What 3 letter logo would you like to display?',
-        name: 'text',
-    },
-    {
-        type: 'input',
-        message: 'What color would you like the text to be? (enter color or hex value)',
-        name: 'textColor',
     }
+    
 ];
 // inquirer prompt to generate responses to query
 inquirer.prompt(questions)

@@ -13,7 +13,7 @@ describe('Triangle', () => {
         it('should render SVG line with points and fill color', () => {
             const shape = new Triangle();
             shape.setColor("blue")
-            expect(shape.render()).toEqual('<polygon points="150,10 260,150 40,150" fill="blue" />');
+            expect(shape.render()).toEqual('<polygon points="150, 18 244, 182 56, 182" fill="blue" />');
         })
     });
     describe('renderText() method', () => {
@@ -22,7 +22,7 @@ describe('Triangle', () => {
                 'SVG',
                 'white'
             );
-            expect(shapeText.renderText()).toEqual(`<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>`)
+            expect(shapeText.renderText()).toEqual(`<text x="152" y="160" font-size="60" text-anchor="middle" fill="white">SVG</text>`)
         })
     })
   
