@@ -37,17 +37,21 @@ inquirer.prompt(questions)
             if (data.shape === 'circle') {
                 const circle = new Circle(data.text, data.textColor);
                 circle.setColor(data.fillColor);
+                 // sets the inputs to generateSVG function
+                iconText = circle.renderText();
                 userShape = circle.render();
                
             } else if (data.shape === 'square') {
                 const square = new Square(data.text, data.textColor);
                 square.setColor(data.fillColor);
+                iconText = square.renderText();
                 userShape = square.render();
                 
                
             } else if (data.shape === 'triangle') {
                 const triangle = new Triangle(data.text, data.textColor)
                 triangle.setColor(data.fillColor);
+                iconText = triangle.renderText();
                 userShape = triangle.render();
                 
                
@@ -60,8 +64,8 @@ inquirer.prompt(questions)
 
             
             // sets the inputs to generateSVG function
-            iconText = data.text;
-            iconTextColor = data.textColor;
+            // iconText = userShape.renderText();
+            // iconTextColor = data.textColor;
         }
        
         
@@ -70,7 +74,7 @@ inquirer.prompt(questions)
     ))
     .then(() => {
         // passes info to generateSVG function and writes results to file
-        const icon = generateSVG(userShape, iconText, iconTextColor);
+        const icon = generateSVG(userShape, iconText);
         return writeFile('./examples/icon.svg', icon);
         
     })
