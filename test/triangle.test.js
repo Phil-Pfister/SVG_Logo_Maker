@@ -1,5 +1,7 @@
 const Triangle = require('../lib/triangle');
 
+// tests for triangle class
+
 describe('Triangle', () => {
     describe('Instantiate', () => {
         it('should be an instance of the Triangle class', () => {

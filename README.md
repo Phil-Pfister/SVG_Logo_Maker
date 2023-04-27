@@ -7,7 +7,8 @@
   ----------------------
   - [Description](#description) 
   - [Usage](#usage)  
-  - [Installation](#installation)   
+  - [Installation](#installation)
+  - [Samples-and-links](#samples-and-links)      
   - [Contributing](#contributing)  
   - [Questions](#questions)
   - [License](#license)
@@ -15,7 +16,8 @@
 
   ## Description  
   -------------------
-  This application generates an icon as a svg file that has three text characters and can be a square, triangle or circle. 
+  This application generates an icon as a svg file that has three text characters and can be a square, triangle or circle based on user preference. 
+  The application also includes test suites run by jest for the shape classes 
 
   ## Usage  
   ------------
@@ -23,15 +25,23 @@
  
   ## Installation  
   -------------------
-  Runs on nodejs, run npm i to install json dependencies
+  Runs on nodejs. Clone repo to your machine and run `npm i` in the command line to install json dependencies for inquirer and jest. 
+
+  ## Samples-and-links
+  -------------------
+  This is a sample of an icon created by this app:
+
+  ![Image of finished logo](./images/icon_example.png)
+
+  [Click here to see a video of application in use](https://drive.google.com/file/d/1DJIGW_S0L7uHk7SQnVxHMcshpisB_1wY/view?usp=sharing)
 
   ## Credits 
   ------------------
-  I used resources learned from Rice University Coding Bootcamp as well as documentation from nodejs, inquirer and SVG
+  I used resources learned from Rice University Coding Bootcamp as well as documentation from nodejs, inquirer and SVG. I also consulted MDN docs.
 
   ## Tests
   ------------------
-  Run npm test in the command line to run the attached test files
+  Run `npm test` in the command line to run the attached test files
 
   ## Contact Information
   -------------------------

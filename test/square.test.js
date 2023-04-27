@@ -1,5 +1,7 @@
 const Square = require('../lib/square');
 
+
+// tests for square class
 describe('Square', () => {
     describe('Instantiate', () => {
         it('should be an instance of the square class', () => {
